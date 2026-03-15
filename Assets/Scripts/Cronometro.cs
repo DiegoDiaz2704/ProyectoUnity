@@ -11,6 +11,7 @@ public class Cronometro : MonoBehaviour
     [SerializeField] TextMeshProUGUI felicitacion;
     private int minutos, segundos, decimasSegundo;
     private bool circuitoFinalizado = false;
+    public TextMeshProUGUI Puntos;
 
 
 
@@ -46,7 +47,7 @@ public class Cronometro : MonoBehaviour
     {
 
         circuitoFinalizado = true;
-        felicitacion.text = "¡Felicidades!\nTu tiempo fue: " + textoCrono.text;
+        felicitacion.text = "¡Felicidades!\nTu tiempo fue: " + textoCrono.text + "\n"+ Puntos.text;
         felicitacion.gameObject.SetActive(true);
 
     } //Fin DETENER_TIEMPO
@@ -57,7 +58,13 @@ public class Cronometro : MonoBehaviour
         tiempo = 0;
         circuitoFinalizado = false;
         felicitacion.gameObject.SetActive(false);
+        Puntos.text = "Puntos: 0";
 
     }//Fin REINICIAR_CRONO
+
+    public void ActualizarPuntos(int puntos)
+    {
+        Puntos.text = "Puntos: " + puntos.ToString();
+    }
 
 }
